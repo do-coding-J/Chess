@@ -4,15 +4,15 @@
 int main(){
 	cout << "Testing..." << endl;
 	
-	piecetype pawn;
-	pawn.setColor("white");
-	pawn.setLocation(1,2);
-	pawn.dead();
+	piecetype pawn1;
+	pawn1.setColor("white");
+	pawn1.setPos(1,2);
+	pawn1.dead();
 	
-	cout << pawn.getColor << endl;
-	cout << pawn.getLocation << endl;
-	cout << pawn.mAlive << endl;
+	cout << pawn1.getColor() << endl;
+	cout << pawn1.getPos() << endl;
+	cout << pawn1.isAlive() << endl;
 	
 	cout << "_______________________" << endl;
-	cout << "기대값: white, (1,2), 0" <<endl;
+	cout << "기대값: white, (1,2), 0" << endl;
 }

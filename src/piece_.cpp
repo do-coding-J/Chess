@@ -4,21 +4,26 @@
 
 using namespace std;
 
-void piecetype::setColor(std::string& Color){
-	mColor = Color
+void piecetype::setColor(const string& color){
+	mColor = color;
 }
-const string& piecetype::getColor(){
+const string piecetype::getColor()const{
 	return mColor;
 }
 
-void piecetype::setLocation(size_t setPos[2]){
-	mPos[2] = setPos[2];
+void piecetype::setPos(int X, int Y){
+	mPos[0] = X;
+	mPos[1] = Y;
 }
-const size_t piecetype::getPos(){
-	return mPos;
+const int piecetype::getPos()const{
+	return mPos[1];
 }
 
 void piecetype::dead(){
-	mAlive = 0;
+	mAlive = false;
+}
+
+bool piecetype::isAlive(){
+	return mAlive;
 }
 

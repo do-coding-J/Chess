@@ -7,14 +7,18 @@ using namespace std;
 class piecetype{
 	// color, on board position, is alive?
 	public:
-		void setColor(std::string& Color);
-		const std::string& getColor() const;
-		void setLocation(size_t setPos[2]);
-		const size_t getPos() const;
+		piecetype();
+		void setColor(const string& color);
+		const string& getColor();
+		void setPos(int X, int Y);
+		int getPos() const;
 		void dead();
+		bool isAlive();
 		
 	private:
-		size_t mPos[2];
+		int posX = 0;
+		int posY = 0;
+		int mPos[1];
 		const std::string& mColor;
-		bool mAlive = 1;
+		bool mAlive = true;
 };
