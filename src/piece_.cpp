@@ -4,18 +4,18 @@
 
 using namespace std;
 
-void piecetype::setColor(const string& color){
+void piecetype::setColor(const string& color) {
 	mColor = color;
 }
-const string piecetype::getColor()const{
+string piecetype::getColor() {
 	return mColor;
 }
 
-void piecetype::setPos(int X, int Y){
+void piecetype::setPos(int X, int Y) {
 	mPos[0] = X;
 	mPos[1] = Y;
 }
-const int piecetype::getPos()const{
+int piecetype::getPos() {
 	return mPos[1];
 }
 
