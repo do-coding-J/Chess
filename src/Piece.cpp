@@ -26,7 +26,11 @@ void Piece::dead(){
 	mAlive = 0;
 }
 
-void Piece::setMPos(size_t xpos, size_t ypos){
-	Pos[0] = xpos;
-	Pos[1] = ypos;
+void Piece::setMPosArr(int xpos, int ypos){
+	mPosArr[0] = xpos;
+	mPosArr[1] = ypos;
+}
+
+int* Piece::getMPosArr(){
+	return mPosArr;
 }

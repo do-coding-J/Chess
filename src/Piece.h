@@ -7,8 +7,6 @@ using namespace std;
 
 class Piece{
 	public:
-		array<size_t,2> Pos = {0};
-	
 		void setMName(const string& name);
 		string& getMName();
 		
@@ -18,11 +16,12 @@ class Piece{
 		void dead();
 		bool isAlive();
 	
-		void setMPos(size_t xpos, size_t ypos);
-
+		void setMPosArr(int xpos, int ypos);
+		int* getMPosArr();
 	
 	private:
 		string mName;
 		string mColor;
 		bool mAlive = 1;
+		int mPosArr[2] = {0, 0};
 };
