@@ -1,10 +1,11 @@
 #include<iostream>
 #include "Piece.h"
+#include "Board.h"
 
 using namespace std;
 
 int main(){
-	cout << "Testing..." << endl;
+	cout << "Testing Piece..." << endl;
 	
 	Piece pawn1;
 	pawn1.setMName("pawn");
@@ -24,6 +25,8 @@ int main(){
 	cout << "alive = 1, dead = 0:	" << pawn1.isAlive() << endl;
 	cout << "-----------------------" << endl;
 	
-	
+	cout << "Testing board..." << endl;
+	Board chessboard;
+	chessboard.Draw();
 	
 }

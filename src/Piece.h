@@ -3,15 +3,14 @@
 #include <string>
 #include <array>
 
-using namespace std;
 
 class Piece{
 	public:
-		void setMName(const string& name);
-		string& getMName();
+		void setMName(const std::string& name);
+		std::string& getMName();
 		
-		void setMColor(const string& color);
-		string& getMColor();
+		void setMColor(const std::string& color);
+		std::string& getMColor();
 	
 		void dead();
 		bool isAlive();
@@ -20,8 +19,8 @@ class Piece{
 		int* getMPosArr();
 	
 	private:
-		string mName;
-		string mColor;
+		std::string mName;
+		std::string mColor;
 		bool mAlive = 1;
 		int mPosArr[2] = {0, 0};
 };
