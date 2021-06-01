@@ -24,3 +24,16 @@ void Board::getDeleteBoardArr(size_t x,size_t y){
 int** Board::getDeleteBoardArr(){
 	return mBoardArr;
 }
+
+void Board::setMColsize(){
+	
+}
+int Board::getMColsize()
+void Board::setMRowsize()
+int Board::getMRowsize()
+	
+for(int i=0;i<(sizeof(chessboard.getMakeBoardArr())/sizeof(chessboard.getMakeBoardArr()[0]));i++){
+		for(int j=0;j<(sizeof(chessboard.getMakeBoardArr()[0])/sizeof(chessboard.getMakeBoardArr()[0][0]));j++){
+			cout << chessboard.getMakeBoardArr()[i][j] <<endl;
+		}
+	}

@@ -29,11 +29,7 @@ int main(){
 	cout << "Testing board..." << endl;
 	Board chessboard;
 	chessboard.setMakeBoardArr(8,8);
-	for(int i=0;i<(sizeof(chessboard.getMakeBoardArr())/sizeof(chessboard.getMakeBoardArr()[0]));i++){
-		for(int j=0;j<(sizeof(chessboard.getMakeBoardArr()[0])/sizeof(chessboard.getMakeBoardArr()[0][0]));j++){
-			cout << chessboard.getMakeBoardArr()[i][j] <<endl;
-		}
-	}
+	
 
 	cout << "-----------------------" << endl;
 }
