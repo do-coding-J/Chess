@@ -4,9 +4,18 @@
 
 class Board{
 	public:
-		void setMMakeBoard(size_t x, size_t y);
-		int getMMakeBoard();
-		void Draw();
+		void setMakeBoardArr(size_t x, size_t y);
+		int** getMakeBoardArr();
+		void getDeleteBoardArr(size_t x, size_t y);
+		int** getDeleteBoardArr();
+		void setMColsize();
+		int getMColsize();
+		void setMRowsize();
+		int getMRowsize();
 	private:
-		int mMakeBoardArr;
+		int** mBoardArr;
+		int mRowSize;
+		int mColSize;
 };
+
+// 크기 구해서 main에 프린트 해보기
