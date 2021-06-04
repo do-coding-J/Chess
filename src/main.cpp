@@ -28,10 +28,8 @@ int main(){
 	
 	cout << "Testing board..." << endl;
 	Board chessboard;
-	chessboard.setMakeBoardArr(8,8);
+	chessboard.setMakeBoardArr();
 	cout << "-----------------------" << endl;
-	cout << chessboard.getMakeBoardArr() << endl;
-	cout << "-----------------------" << endl;
-	chessboard.getDeleteBoardArr(8);
+	cout << "chessboard.getMakeBoardArr()[0][0] : " << chessboard.getMakeBoardArr()[0][0] << endl;
 	cout << "-----------------------" << endl;
 }

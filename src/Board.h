@@ -4,12 +4,17 @@
 
 class Board{
 	public:
-		void setMakeBoardArr(size_t x, size_t y);
+		void setMakeBoardArr();
 		int** getMakeBoardArr();
-		void getDeleteBoardArr(size_t y);
-		int** getDeleteBoardArr();
+	//	void getDeleteBoardArr(size_t y);
+	//	int** getDeleteBoardArr();
+		int setX();
+		int setY();
+	
 	private:
 		int** mBoardArr;
+		int x= setX();
+		int y= setY();
 };
 
 // 크기 구해서 main에 프린트 해보기
