@@ -6,6 +6,8 @@
 
 class Piece{
 	public:
+		Piece(){};
+		~Piece(){};
 		void setMName(const std::string& name);
 		std::string& getMName();
 		

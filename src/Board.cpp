@@ -7,8 +7,8 @@ using namespace std;
 
 void Board::setMakeBoardArr(){
 	mBoardArr = new int* [x];
-	for(int i=0;i<x;i++) 
-		mBoardArr[i] = new int[y];
+	for(int i=0;i<x;i++) {mBoardArr[i] = new int[y];}
+	cout << "chess board made" << endl;
 }
 int** Board::getMakeBoardArr(){
 	return mBoardArr;
@@ -26,14 +26,14 @@ int** Board::getDeleteBoardArr(){
 
 
 int Board::setX(){
-	cout << "x : ";
+	cout << "col : ";
 	cin >> x1;
 	int* x = &x1;
 	return *x;
 }
 
 int Board::setY(){
-	cout << "y : ";
+	cout << "row : ";
 	cin >> y1;
 	int* y = &y1;
 	return *y;
