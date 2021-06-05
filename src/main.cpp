@@ -6,6 +6,7 @@
 using namespace std;
 
 int main(){
+	/*
 	cout << "Testing Piece..." << endl;
 	
 	Piece pawn1;
@@ -25,11 +26,17 @@ int main(){
 	cout << pawn1.getMColor() << " " <<pawn1.getMName() << " at " << pawn1.getMPosArr()[0] << ", " << pawn1.getMPosArr()[1] << endl;
 	cout << "alive = 1, dead = 0:	" << pawn1.isAlive() << endl;
 	cout << "-----------------------" << endl;
-	
+	*/
 	cout << "Testing board..." << endl;
 	Board chessboard;
+	cout << "-----------------------" << endl;
 	chessboard.setMakeBoardArr();
+	cout << "chessboard.getMakeBoardArr() : " <<chessboard.getMakeBoardArr()<<endl;
 	cout << "-----------------------" << endl;
-	cout << "chessboard.getMakeBoardArr()[0][0] : " << chessboard.getMakeBoardArr()[0][0] << endl;
+	chessboard.view();
 	cout << "-----------------------" << endl;
+	cout << "delete" << endl;
+	chessboard.setDeleteBoardArr();
+	cout << "-----------------------" << endl;
+	cout << "chessboard.getDeleteBoardArr() : " <<chessboard.getDeleteBoardArr()<<endl;
 }
