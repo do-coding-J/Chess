@@ -5,10 +5,19 @@
 
 using namespace std;
 
+<<<<<<< master
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> local
 Piece::Piece(const string& name, const string& color, array<int,2> posArr):mName(name),mColor(color),mPosArr[2](array<int,2> posArr)
 {
 }
 
+<<<<<<< master
+=======
+>>>>>>> master
+>>>>>>> local
 void Piece::setMName(const string& name){
 	mName = name;
 }
