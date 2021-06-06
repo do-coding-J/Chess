@@ -5,16 +5,7 @@
 
 class Board{
 	public:
-<<<<<<< master
-	Board(){};
-	~Board(){};
-=======
-<<<<<<< HEAD
-=======
-	Board(){};
-	~Board(){};
->>>>>>> master
->>>>>>> local
+
 		void setMakeBoardArr();
 		int** getMakeBoardArr();
 		void setDeleteBoardArr();

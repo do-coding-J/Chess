@@ -6,18 +6,10 @@
 
 class Piece{
 	public:
-<<<<<<< master
+
 		Piece(const std::string& name, const std::string& color, array<int,2> posArr;
 		~Piece();
-=======
-<<<<<<< HEAD
-		Piece(){};
-		~Piece(){};
-=======
-		Piece(const std::string& name, const std::string& color, array<int,2> posArr;
-		~Piece();
->>>>>>> master
->>>>>>> local
+
 		void setMName(const std::string& name);
 		std::string& getMName();
 		

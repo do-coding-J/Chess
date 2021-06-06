@@ -5,6 +5,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 <<<<<<< master
 =======
 <<<<<<< HEAD
@@ -18,6 +19,8 @@ Piece::Piece(const string& name, const string& color, array<int,2> posArr):mName
 =======
 >>>>>>> master
 >>>>>>> local
+=======
+>>>>>>> feature/piece
 void Piece::setMName(const string& name){
 	mName = name;
 }
