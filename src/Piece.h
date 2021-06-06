@@ -6,25 +6,24 @@
 
 class Piece{
 	public:
-
-		Piece(const std::string& name, const std::string& color, array<int,2> posArr;
+		Piece();
+		Piece(const std::string& name, const std::string& color, int posX, int posY);
 		~Piece();
-
-		void setMName(const std::string& name);
-		std::string& getMName();
-		
-		void setMColor(const std::string& color);
-		std::string& getMColor();
 	
-		void dead();
-		bool isAlive();
+	std::string& getMName();
 	
-		void setMPosArr(int xpos, int ypos);
-		int* getMPosArr();
+	std::string& getMColor();
+	
+	void dead();
+	bool isAlive();
+	
+	void setMPosArr(int xpos, int ypos);
 	
 	private:
+		private:
 		std::string mName;
 		std::string mColor;
+		int mPosX;
+		int mPosY;
 		bool mAlive = 1;
-		int mPosArr[2] = {0, 0};
 };

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <array>
@@ -5,48 +6,14 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-<<<<<<< master
-=======
-<<<<<<< HEAD
-=======
->>>>>>> local
-Piece::Piece(const string& name, const string& color, array<int,2> posArr):mName(name),mColor(color),mPosArr[2](array<int,2> posArr)
+Piece::Piece(const std::string& name, const std::string& color, int posX, int posY):mName(name),mColor(color),mPosX(posX), mPosY(posY)
 {
 }
 
-<<<<<<< master
-=======
->>>>>>> master
->>>>>>> local
-=======
->>>>>>> feature/piece
-void Piece::setMName(const string& name){
-	mName = name;
+Piece::~Piece()
+{
 }
+
 string& Piece::getMName(){
 	return mName;
-}
-
-void Piece::setMColor(const string& color){
-	mColor = color;
-}
-string& Piece::getMColor(){
-	return mColor;
-}
-
-bool Piece::isAlive(){
-	return mAlive;
-}
-void Piece::dead(){
-	mAlive = 0;
-}
-
-void Piece::setMPosArr(int xpos, int ypos){
-	mPosArr[0] = xpos;
-	mPosArr[1] = ypos;
-}
-
-int* Piece::getMPosArr(){
-	return mPosArr;
 }
