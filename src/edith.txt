@@ -1,0 +1,15 @@
+#pragma once
+#include <iostream>
+#include <string>
+#include <array>
+
+
+
+class Piece{
+	public:
+		Piece(const std::string& name, const std::string& color, array<int,2> posArr);
+		~Piece();
+	private:
+		std::string mName;
+		std::string mColor;
+}

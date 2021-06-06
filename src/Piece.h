@@ -6,8 +6,8 @@
 
 class Piece{
 	public:
-		Piece(){};
-		~Piece(){};
+		Piece(const std::string& name, const std::string& color, array<int,2> posArr;
+		~Piece();
 		void setMName(const std::string& name);
 		std::string& getMName();
 		

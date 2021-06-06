@@ -1,0 +1,11 @@
+#pragma once
+#include <iostream>
+#include <string>
+#include <array>
+#include "Piece.h"
+
+using namespace std;
+
+Piece::Piece(const string& name, const string& color, posArr[2]):mName(name),mColor(color),mPosArr[2](posArr[2])
+{
+}
