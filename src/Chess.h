@@ -3,4 +3,10 @@
 #include "Board.h"
 #include "Piece.h"
 
-void GameInit();
+
+class Chess{
+	public:
+	
+	private:
+	
+};
