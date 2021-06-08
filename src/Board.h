@@ -9,12 +9,12 @@ class Board{
 		Board(int x, int y);
 		~Board();
 	
-		int** getMBoardArr();
+		char** getMBoardArr();
 	
 		void boardview();
 		
 	private:
 		int col; //x
 		int row; //y
-		int** mBoardArr;
+		char** mBoardArr;
 };

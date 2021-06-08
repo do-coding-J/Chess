@@ -20,7 +20,6 @@ int main(){
 	
 	cout <<"Board...."<< endl;
 	Board board1(8,8);
-	cout << board1.getMBoardArr()[0][0] << endl;
 	board1.boardview();
 	board1.~Board();
 }

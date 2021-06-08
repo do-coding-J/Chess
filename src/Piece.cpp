@@ -6,7 +6,6 @@
 using namespace std;
 
 Piece::Piece(){
-	cout << "wrong declaration" << endl;
 }
 Piece::Piece(const std::string& name, const std::string& color, int posX, int posY):mName(name),mColor(color),mPosX(posX), mPosY(posY){
 }

@@ -7,12 +7,14 @@
 using namespace std;
 
 Board::Board(){
-	cout << "wrong declaration" << endl;
 }
 Board::Board(int x, int y):col(x), row(y){
-	mBoardArr = new int* [col];
+	mBoardArr = new char* [col];
 	for(int i=0;i<col;i++){
-		mBoardArr[i] = new int[row];
+		mBoardArr[i] = new char[row];
+		for(int j=0;j<row;j++){
+			mBoardArr[i][j] = {'o'};
+		}
 	}
 }
 
@@ -23,7 +25,7 @@ Board::~Board(){
 	delete [] mBoardArr;
 }
 
-int** Board::getMBoardArr(){
+char** Board::getMBoardArr(){
 	return mBoardArr;
 }
 
