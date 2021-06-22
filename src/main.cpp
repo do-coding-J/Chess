@@ -164,7 +164,8 @@ class Board: public Piece {
 			mBoardArr[0][6] = 'N';
 			mBoardArr[0][7] = 'R';
 			
-			mBoardArr[6][1] = 'p'; // white
+			mBoardArr[6][0] = 'p'; // white
+			mBoardArr[6][1] = 'p';
 			mBoardArr[6][2] = 'p';
 			mBoardArr[6][3] = 'p';
 			mBoardArr[6][4] = 'p';
@@ -180,8 +181,17 @@ class Board: public Piece {
 			mBoardArr[7][6] = 'n';
 			mBoardArr[7][7] = 'r';
 		}
-		void pieceSet(int x, int y, char i){  // 기물의 이니셜(i)로 클래스 파악 후 x y 위치로 이동
-			
+		void setPoB(int x, int y, int x1, int y1){
+			char temp;
+			temp = mBoardArr[x][y];
+			if(mBoardArr[x1][y1] == 'o'){
+				mBoardArr[x1][y1] = mBoardArr[x][y];
+				mBoardArr[x1][y1] = temp;
+			}
+			else {
+				 mBoardArr[x1][y1] = mBoardArr[x][y];
+				 mBoardArr[x1][y1] = 'o';
+			}	
 		}
 		char** getMBoardArr(){
 			return mBoardArr;
@@ -205,8 +215,25 @@ class Board: public Piece {
 
 // --------------------------------------------------------------------------------------
 
-class game : public Board{
+class Game : public Board{
+	public:
+		void pieceDeclare(){
+			piece[0].setPiece("Pawn", "black");
+			piece[1].setPiece("Rook", "black");
+			piece[2].setPiece("Knight", "black");
+			piece[3].setPiece("Bishop", "black");
+			piece[4].setPiece("Queen", "black");
+			piece[5].setPiece("King", "black");
+			piece[6].setPiece("Pawn", "white");
+			piece[7].setPiece("Rook", "white");
+			piece[8].setPiece("Knight", "white");
+			piece[9].setPiece("Bishop", "white");
+			piece[10].setPiece("Queen", "white");
+			piece[11].setPiece("King", "white");
+		}
 	
+	private:
+		Piece piece[12];
 };
 // --------------------------------------------------------------------------------------
 
@@ -214,7 +241,7 @@ class game : public Board{
 
 int main(){
 	int turn=0;
-	Board b;
+	Game b;
 	b.makeMBoardArr(8,8);
 	b.initMBoardArr();
 	b.boardview();
