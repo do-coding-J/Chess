@@ -15,6 +15,7 @@
 */
 #include <iostream>
 #include <cctype>
+#include <vector>
 
 using namespace std;
 
@@ -25,7 +26,6 @@ class Piece{
 		Piece(){
 			mName;
 			mColor;
-			mAlive;
 			mInitial;
 		}
 		~Piece(){}
@@ -77,22 +77,14 @@ class Piece{
 		char getMInitial(){
 			return mInitial;
 		}
-	
-		void dead(){
-			mAlive = false;
-		}
-		bool getMAlive(){
-			return mAlive;
-		}
+		
 	private:
 		string mName;
 		bool mColor = true; // black : true, white : false
-		bool mAlive = true;
 		char mInitial;
 };
 
 
-// --------------------------------------------------------------------------------------
 
 
 // --------------------------------------------------------------------------------------
@@ -115,37 +107,28 @@ class Board: public Piece {
 			for(int i=0;i<col;i++){
 				mBoardArr[i] = new char [row];
 				for(int j=0;j<row;j++){
-					/*if (i==0 && j == 0){
-						mBoardArr[i][j] = &piece[8];
-					}
-					else if (i==0 && j == 1){
-						mBoardArr[i][j] = &piece[1];
-					}
-					else if(i == 1){
-						for(int k = 0; k<8;k++)
-						mBoardArr[i][j] = &piece[k];} */
 					mBoardArr[i][j] = {'o'};
 				}
 			}
-			/*
-			mBoardArr[0][8] = '8';
-			mBoardArr[1][8] = '7';
-			mBoardArr[2][8] = '6';
-			mBoardArr[3][8] = '5';
-			mBoardArr[4][8] = '4';
-			mBoardArr[5][8] = '3';
-			mBoardArr[6][8] = '2';
-			mBoardArr[7][8] = '1';
-			mBoardArr[8][0] = 'a';
-			mBoardArr[8][1] = 'b';
-			mBoardArr[8][2] = 'c';
-			mBoardArr[8][3] = 'd';
-			mBoardArr[8][4] = 'e';
-			mBoardArr[8][5] = 'f';
-			mBoardArr[8][6] = 'g';
-			mBoardArr[8][7] = 'h';
-			mBoardArr[8][8] = ' ';*/
+			mBoardArr[0][8] = '1';
+			mBoardArr[1][8] = '2';
+			mBoardArr[2][8] = '3';
+			mBoardArr[3][8] = '4';
+			mBoardArr[4][8] = '5';
+			mBoardArr[5][8] = '6';
+			mBoardArr[6][8] = '7';
+			mBoardArr[7][8] = '8';
+			mBoardArr[8][0] = '1';
+			mBoardArr[8][1] = '2';
+			mBoardArr[8][2] = '3';
+			mBoardArr[8][3] = '4';
+			mBoardArr[8][4] = '5';
+			mBoardArr[8][5] = '6';
+			mBoardArr[8][6] = '7';
+			mBoardArr[8][7] = '8';
+			mBoardArr[8][8] = ' ';
 		}
+	
 		void initMBoardArr(){
 			mBoardArr[1][0] = 'P'; // black
 			mBoardArr[1][1] = 'P';
@@ -181,23 +164,24 @@ class Board: public Piece {
 			mBoardArr[7][6] = 'n';
 			mBoardArr[7][7] = 'r';
 		}
-		void setPoB(int x, int y, int x1, int y1){
+	
+		void setPoB(int a, int b, int c, int d){ //7, 3, 6, 3,
 			char temp;
-			temp = mBoardArr[x][y];
-			if(mBoardArr[x1][y1] == 'o'){
-				mBoardArr[x1][y1] = mBoardArr[x][y];
+			int x1 = a-1, y1 = b-1, x2 = c-1, y2 = d-1;
+			
+			temp = mBoardArr[x2][y2];
+			if(mBoardArr[x2][y2] == 'o'){
+				mBoardArr[x2][y2] = mBoardArr[x1][y1];
 				mBoardArr[x1][y1] = temp;
 			}
 			else {
-				 mBoardArr[x1][y1] = mBoardArr[x][y];
-				 mBoardArr[x1][y1] = 'o';
+				mBoardArr[x2][y2] = mBoardArr[x1][y1];
+				mBoardArr[x1][y1] = 'o';
 			}	
 		}
 		char** getMBoardArr(){
 			return mBoardArr;
 		}
-		
-		
 	
 		void boardview(){
 			for(int i=0;i<col;i++){
@@ -217,6 +201,7 @@ class Board: public Piece {
 
 class Game : public Board{
 	public:
+	/*
 		void pieceDeclare(){
 			piece[0].setPiece("Pawn", "black");
 			piece[1].setPiece("Rook", "black");
@@ -231,18 +216,53 @@ class Game : public Board{
 			piece[10].setPiece("Queen", "white");
 			piece[11].setPiece("King", "white");
 		}
+	*/
+		void setLog(int a, int b, int c, int d){
+			Log.push_back(a);
+			Log.push_back(b);
+			Log.push_back(c);
+			Log.push_back(d);
+		}
+	
+		vector<int> getLog(){
+			return Log;
+		}
+		
 	
 	private:
-		Piece piece[12];
+	//	Piece piece[12];
+	vector<int> Log;
+		
 };
 // --------------------------------------------------------------------------------------
 
 
 
 int main(){
+	
+	int x1,y1,x2,y2;
 	int turn=0;
+	string t;
 	Game b;
-	b.makeMBoardArr(8,8);
+	b.makeMBoardArr(9,9);
 	b.initMBoardArr();
 	b.boardview();
+	
+	while(true){
+		turn++;
+		
+		if(turn%2==0){t="black's turn"; cout << t << endl;}
+		else{t = "white's turn"; cout << t << endl;}
+		
+		cout << "From X Y : "; cin >> x1 >> y1;
+		cout << "To   X Y : "; cin >> x2 >> y2;
+		b.setPoB(x1,y1,x2,y2);
+		b.setLog(x1,y1,x2,y2);
+		system("clear");
+		for(int i = 0; i<turn;i++){
+			
+			cout << t << " : " << b.getLog()[((turn-1)*4)] << ", " << b.getLog()[((turn-1)*4)+1] << " -> " << b.getLog()[((turn-1)*4)+2] << ", " << b.getLog()[((turn-1)*4)+3] << endl;
+		}
+		b.boardview();
+	}
 }
