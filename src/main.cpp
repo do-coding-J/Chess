@@ -78,13 +78,6 @@ class Piece{
 			return mInitial;
 		}
 	
-		void setPossmove(){
-			
-		}
-	
-		vector<int> getPossmove(){
-			
-		}
 		
 	private:
 		string mName;
@@ -174,10 +167,6 @@ class Board: public Piece {
 			mBoardArr[7][7] = 'r';
 		}
 		
-		void setPoB(int a, int b, char c){
-			
-		}
-		
 		char** getMBoardArr(){
 			return mBoardArr;
 		}
@@ -236,8 +225,7 @@ class Game : public Board{
 		}
 
 		void setPoB(int a, int b, int c, int d){ //7, 3, 6, 3,
-			char temp;
-			int x1 = a-1, y1 = b-1, x2 = c-1, y2 = d-1;
+			x1 = a-1, y1 = b-1, x2 = c-1, y2 = d-1;
 			
 			temp = getMBoardArr()[x2][y2];
 			if(getMBoardArr()[x2][y2] == '.'){
@@ -247,12 +235,97 @@ class Game : public Board{
 			else {
 				getMBoardArr()[x2][y2] = getMBoardArr()[x1][y1];
 				getMBoardArr()[x1][y1] = '.';
-			}	
+			}
+		}
+	
+		void getFrom(int a, int b){
+			x1 = a-1; y1 = b-1;
+		}
+		
+		void calcmoves(){
+			moves.clear();
+			temp = getMBoardArr()[x1][y1];
+			if(temp == 'p'){
+				moves.push_back(x1-1); moves.push_back(y1);
+				if(getMBoardArr()[x1-1][y1-1] != '.'){moves.push_back(x1-1); moves.push_back(y1-1);}
+				if(getMBoardArr()[x1-1][y1+1] != '.'){moves.push_back(x1-1); moves.push_back(y1+1);}
+				
+				for(int i = 0; i < moves.size(); i++){
+					cout << moves[i];
+					if(i%2==1){cout << "\t";}
+				}
+			}
+			else if(temp == 'P'){
+				moves.push_back(x1+1);
+				moves.push_back(y1);
+				if(getMBoardArr()[x1+1][y1-1] != '.'){moves.push_back(x1+1); moves.push_back(y1-1);}
+				if(getMBoardArr()[x1+1][y1+1] != '.'){moves.push_back(x1+1); moves.push_back(y1+1);}
+				
+				for(int i = 0; i < moves.size(); i++){
+					cout << moves[i];
+					if(i%2==1){cout << "\t";}
+				}
+			}
+			else if(temp == 'r' || temp == 'R'){
+				for(int i = 0; i < 8; i++){
+					moves.push_back(i); moves.push_back(y1);
+				}
+				for(int i = 0; i < 8; i++){
+					moves.push_back(x1); moves.push_back(i);
+				}
+			}
+			else if(temp == 'n' || temp == 'N'){
+				moves.push_back(x1+2); moves.push_back(y1-1);
+				moves.push_back(x1+2); moves.push_back(y1+1);
+				moves.push_back(x1-2); moves.push_back(y1-1);
+				moves.push_back(x1-2); moves.push_back(y1+1);
+				moves.push_back(x1+1); moves.push_back(y1-2);
+				moves.push_back(x1-1); moves.push_back(y1-2);
+				moves.push_back(x1+1); moves.push_back(y1+2);
+				moves.push_back(x1-1); moves.push_back(y1+2);
+			}
+			else if(temp == 'b' || temp == 'B'){
+				for(int i = 0; i<4;i++){
+					moves.push_back(x1+i); moves.push_back(y1+i);
+					moves.push_back(x1+i); moves.push_back(y1-i);
+					moves.push_back(x1-i); moves.push_back(y1+i);
+					moves.push_back(x1-i); moves.push_back(y1-i);
+				}
+			}
+			else if(temp == 'q' || temp == 'Q'){
+				for(int i = 0; i < 8; i++){
+					moves.push_back(i); moves.push_back(y1);
+				}
+				for(int i = 0; i < 8; i++){
+					moves.push_back(x1); moves.push_back(i);
+				}
+				for(int i = 0; i<4;i++){
+					moves.push_back(x1+i); moves.push_back(y1+i);
+					moves.push_back(x1+i); moves.push_back(y1-i);
+					moves.push_back(x1-i); moves.push_back(y1+i);
+					moves.push_back(x1-i); moves.push_back(y1-i);
+				}
+			}
+			else if(temp == 'k' || temp == 'K'){
+				moves.push_back(x1+1); moves.push_back(y1);
+				moves.push_back(x1+1); moves.push_back(y1+1);
+				moves.push_back(x1+1); moves.push_back(y1-1);
+				moves.push_back(x1); moves.push_back(y1+1);
+				moves.push_back(x1); moves.push_back(y1-1);
+				moves.push_back(x1-1); moves.push_back(y1);
+				moves.push_back(x1-1); moves.push_back(y1+1);
+				moves.push_back(x1-1); moves.push_back(y1-1);
+			}
+		}
+		vector<int> getMoves(){
+			return moves;
 		}
 	private:
 	//	Piece piece[12];
 		vector<int> Log;
-	
+		vector<int> moves;
+		int x1,x2,y1,y2;
+		char temp;
 	protected:	
 };
 // --------------------------------------------------------------------------------------
@@ -266,18 +339,19 @@ int main(){
 	Game board;
 	board.makeMBoardArr(9,9);
 	board.initMBoardArr();
-	board.boardview();
 	
+/*	
 	while(true){
-		system("clear");
-		for(int i = 0; i<turn;i++){
-			if(turn == 1){break;}
-			else{
-				if (i%2==1){cout << "white's turn";}
-				else if (i%2==0){cout << "black's turn";}
-				cout << " : " << board.getLog()[((turn-1)*4)] << ", " << board.getLog()[((turn-1)*4)+1] << " -> " << board.getLog()[((turn-1)*4)+2] << ", " << board.getLog()[((turn-1)*4)+3] << endl;
+//		system("clear");
+		if(turn > 1){
+			for(int i = 1; i<turn;i++){
+				if (i%2==1){cout << "white's move";}
+				else if (i%2==0){cout << "black's move";}
+				
+				cout << " : " << board.getLog()[(turn-2)*4] << ", " << board.getLog()[((turn-2)*4)+1] << " -> " << board.getLog()[((turn-2)*4)+2] << ", " << board.getLog()[((turn-2)*4)+3] << endl;
 			}
 		}
+		
 		if (turn%2==1){cout << "white's turn \n";}
 		else if (turn%2==0){cout << "black's turn \n";}
 		
@@ -290,25 +364,6 @@ int main(){
 		board.setLog(x1,y1,x2,y2);
 		
 		turn++;
-/*		if (turn>1){
-			system("clear");
-			for(int i = 0; i<turn;i++){
-				if (i%2==0){cout << "white's turn";}
-				else if (i%2==1){cout << "black's turn";}
-				cout << " : " << board.getLog()[((turn-1)*4)] << ", " << board.getLog()[((turn-1)*4)+1] << " -> " << board.getLog()[((turn-1)*4)+2] << ", " << board.getLog()[((turn-1)*4)+3] << endl;
-			}
-		}
-		
-		if(turn%2==0){t="black's turn"; cout << t << endl;}
-		else{t = "white's turn"; cout << t << endl;}
-	
-		if(t == "black's turn"){board.boardviewRev();}
-		else if(t == "white's turn"){board.boardview();}
-
-		cout << "From X Y : "; cin >> x1 >> y1;
-		cout << "To   X Y : "; cin >> x2 >> y2;
-		board.setPoB(x1,y1,x2,y2);
-		board.setLog(x1,y1,x2,y2);
-*/		
 	}
+*/
 }
