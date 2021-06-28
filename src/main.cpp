@@ -238,43 +238,108 @@ class Game : public Board{
 			}
 		}
 	
-		void getFrom(int a, int b){
+		void setFrom(int a, int b){
 			x1 = a-1; y1 = b-1;
 		}
 		
 		void calcmoves(){
 			moves.clear();
-			temp = getMBoardArr()[x1][y1];
-			if(temp == 'p'){
-				moves.push_back(x1-1); moves.push_back(y1);
+		//	----------------------------------------------------------------------------------------- white pawn
+			if(getMBoardArr()[x1][y1] == 'p'){
+				if(x1 == 6){
+					if(getMBoardArr()[x1-1][y1] == '.'){moves.push_back(x1-1); moves.push_back(y1);}
+					if(getMBoardArr()[x1-2][y1] == '.'){moves.push_back(x1-2); moves.push_back(y1);}
+				}
+				else {
+					if(getMBoardArr()[x1-1][y1] == '.'){moves.push_back(x1-1); moves.push_back(y1);}
+				}
+				
 				if(getMBoardArr()[x1-1][y1-1] != '.'){moves.push_back(x1-1); moves.push_back(y1-1);}
 				if(getMBoardArr()[x1-1][y1+1] != '.'){moves.push_back(x1-1); moves.push_back(y1+1);}
 				
-				for(int i = 0; i < moves.size(); i++){
-					cout << moves[i];
-					if(i%2==1){cout << "\t";}
-				}
 			}
-			else if(temp == 'P'){
-				moves.push_back(x1+1);
-				moves.push_back(y1);
+		//	----------------------------------------------------------------------------------------- black pawn
+			
+			else if(getMBoardArr()[x1][y1] == 'P'){
+				if(x1 == 1){
+					if(getMBoardArr()[x1+1][y1] == '.'){moves.push_back(x1+1); moves.push_back(y1);}
+					if(getMBoardArr()[x1+2][y1] == '.'){moves.push_back(x1+2); moves.push_back(y1);}
+				}
+				else {
+					if(getMBoardArr()[x1+1][y1] == '.'){moves.push_back(x1+1); moves.push_back(y1);}
+				}
 				if(getMBoardArr()[x1+1][y1-1] != '.'){moves.push_back(x1+1); moves.push_back(y1-1);}
 				if(getMBoardArr()[x1+1][y1+1] != '.'){moves.push_back(x1+1); moves.push_back(y1+1);}
-				
-				for(int i = 0; i < moves.size(); i++){
-					cout << moves[i];
-					if(i%2==1){cout << "\t";}
-				}
 			}
-			else if(temp == 'r' || temp == 'R'){
-				for(int i = 0; i < 8; i++){
+		//	----------------------------------------------------------------------------------------- rook
+			
+			else if(getMBoardArr()[x1][y1] == 'r' || getMBoardArr()[x1][y1] == 'R'){
+				for(int i = x1-1; i > 0; i--){
 					moves.push_back(i); moves.push_back(y1);
+					if(getMBoardArr()[i][y1] != '.'){
+						if(getMBoardArr()[i][y1] == 'r'){
+							if(96<getMBoardArr()[i][y1]<123){break;}
+							else {moves.push_back(i); moves.push_back(y1); break;}
+						}
+						if(getMBoardArr()[i][y1] == 'R'){
+							if(64<getMBoardArr()[i][y1]<91){break;}
+							else {moves.push_back(i); moves.push_back(y1); break;}
+						}
+					}
 				}
-				for(int i = 0; i < 8; i++){
+				for(int i = x1+1; i < 8; i++){
+					moves.push_back(i); moves.push_back(y1);
+					if(getMBoardArr()[i][y1] != '.'){
+						if(getMBoardArr()[i][y1] == 'r'){
+							if(96<getMBoardArr()[i][y1]<123){break;}
+							else {moves.push_back(i); moves.push_back(y1); break;}
+						}
+						if(getMBoardArr()[i][y1] == 'R'){
+							if(64<getMBoardArr()[i][y1]<91){break;}
+							else {moves.push_back(i); moves.push_back(y1); break;}
+						}
+					}
+				}
+				
+				for(int i = y1-1; i > 0; i--){
 					moves.push_back(x1); moves.push_back(i);
+					if(getMBoardArr()[x1][i] != '.'){
+						if(getMBoardArr()[x1][i] == 'r'){
+							if(96<getMBoardArr()[x1][i]<123){break;}
+							else {moves.push_back(x1); moves.push_back(i); break;}
+						}
+						if(getMBoardArr()[x1][i] == 'R'){
+							if(64<getMBoardArr()[x1][i]<91){break;}
+							else {moves.push_back(x1); moves.push_back(i); break;}
+						}
+					}
+				}
+				for(int i = y1+1; i < 8; i++){
+					moves.push_back(x1); moves.push_back(i);
+					if(getMBoardArr()[x1][i] != '.'){
+						if(getMBoardArr()[x1][i] == 'r'){
+							if(96<getMBoardArr()[x1][i]<123){break;}
+							else {moves.push_back(x1); moves.push_back(i); break;}
+						}
+						if(getMBoardArr()[x1][i] == 'R'){
+							if(64<getMBoardArr()[x1][i]<91){break;}
+							else {moves.push_back(x1); moves.push_back(i); break;}
+						}
+					}
 				}
 			}
-			else if(temp == 'n' || temp == 'N'){
+		//	----------------------------------------------------------------------------------------- knight 해야됨
+			
+			else if(getMBoardArr()[x1][y1] == 'n' || getMBoardArr()[x1][y1] == 'N'){
+				if(getMBoardArr()[x1][i] == 'r'){
+					if(96<getMBoardArr()[x1][i]<123){break;}
+					else {moves.push_back(x1); moves.push_back(i); break;}
+				}
+				if(getMBoardArr()[x1][i] == 'R'){
+					if(64<getMBoardArr()[x1][i]<91){break;}
+					else {moves.push_back(x1); moves.push_back(i); break;}
+				}
+				
 				moves.push_back(x1+2); moves.push_back(y1-1);
 				moves.push_back(x1+2); moves.push_back(y1+1);
 				moves.push_back(x1-2); moves.push_back(y1-1);
@@ -284,29 +349,68 @@ class Game : public Board{
 				moves.push_back(x1+1); moves.push_back(y1+2);
 				moves.push_back(x1-1); moves.push_back(y1+2);
 			}
-			else if(temp == 'b' || temp == 'B'){
-				for(int i = 0; i<4;i++){
+			
+		//	----------------------------------------------------------------------------------------- bishop
+			else if(getMBoardArr()[x1][y1] == 'b' || getMBoardArr()[x1][y1] == 'B'){
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1+i); moves.push_back(y1+i);
+					if(getMBoardArr()[x1+i][y1+i] != '.'){moves.push_back(x1+i); moves.push_back(y1+i); break;}
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1+i); moves.push_back(y1-i);
+					if(getMBoardArr()[x1+i][y1-i] != '.'){moves.push_back(x1+i); moves.push_back(y1-i); break;}
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1-i); moves.push_back(y1+i);
+					if(getMBoardArr()[x1-i][y1+i] != '.'){moves.push_back(x1-i); moves.push_back(y1+i); break;}
+					
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1-i); moves.push_back(y1-i);
+					if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
 				}
 			}
-			else if(temp == 'q' || temp == 'Q'){
-				for(int i = 0; i < 8; i++){
+		//	----------------------------------------------------------------------------------------- queen
+			
+			else if(getMBoardArr()[x1][y1] == 'q' || getMBoardArr()[x1][y1] == 'Q'){
+				for(int i = x1-1; i > 0; i--){
 					moves.push_back(i); moves.push_back(y1);
+					if(getMBoardArr()[i][y1] != '.'){moves.push_back(i); moves.push_back(y1); break;}
 				}
-				for(int i = 0; i < 8; i++){
+				for(int i = x1+1; i < 8; i++){
+					moves.push_back(i); moves.push_back(y1);
+					if(getMBoardArr()[i][y1] != '.'){moves.push_back(i); moves.push_back(y1); break;}
+				}
+				
+				for(int i = y1-1; i > 0; i--){
 					moves.push_back(x1); moves.push_back(i);
+					if(getMBoardArr()[x1][i] != '.'){moves.push_back(x1); moves.push_back(i); break;}
 				}
-				for(int i = 0; i<4;i++){
+				for(int i = y1+1; i < 8; i++){
+					moves.push_back(x1); moves.push_back(i);
+					if(getMBoardArr()[x1][i] != '.'){moves.push_back(x1); moves.push_back(i); break;}
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1+i); moves.push_back(y1+i);
+					if(getMBoardArr()[x1+i][y1+i] != '.'){moves.push_back(x1+i); moves.push_back(y1+i); break;}
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1+i); moves.push_back(y1-i);
+					if(getMBoardArr()[x1+i][y1-i] != '.'){moves.push_back(x1+i); moves.push_back(y1-i); break;}
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1-i); moves.push_back(y1+i);
+					if(getMBoardArr()[x1-i][y1+i] != '.'){moves.push_back(x1-i); moves.push_back(y1+i); break;}
+					
+				}
+				for(int i = 1; i<4;i++){
 					moves.push_back(x1-i); moves.push_back(y1-i);
+					if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
 				}
 			}
-			else if(temp == 'k' || temp == 'K'){
+		//	----------------------------------------------------------------------------------------- king
+			
+			else if(getMBoardArr()[x1][y1] == 'k' || getMBoardArr()[x1][y1] == 'K'){
 				moves.push_back(x1+1); moves.push_back(y1);
 				moves.push_back(x1+1); moves.push_back(y1+1);
 				moves.push_back(x1+1); moves.push_back(y1-1);
@@ -320,12 +424,16 @@ class Game : public Board{
 		vector<int> getMoves(){
 			return moves;
 		}
+		void showmoves(){
+			
+		}
 	private:
 	//	Piece piece[12];
 		vector<int> Log;
 		vector<int> moves;
 		int x1,x2,y1,y2;
 		char temp;
+		int j=0;
 	protected:	
 };
 // --------------------------------------------------------------------------------------
@@ -339,8 +447,7 @@ int main(){
 	Game board;
 	board.makeMBoardArr(9,9);
 	board.initMBoardArr();
-	
-/*	
+		
 	while(true){
 //		system("clear");
 		if(turn > 1){
@@ -359,11 +466,17 @@ int main(){
 		else if(turn%2==0){board.boardviewRev();}
 		
 		cout << "From X Y : "; cin >> x1 >> y1;
-		cout << "To   X Y : "; cin >> x2 >> y2;
-		board.setPoB(x1,y1,x2,y2);
-		board.setLog(x1,y1,x2,y2);
+		board.setFrom(x1, y1);
+		board.calcmoves();
+		for(int i= 0; i< board.getMoves().size();i++){
+			cout << board.getMoves()[i] << " ";
+			if(i%2==1){cout << "\n";}
+		}
+//		cout << "To   X Y : "; cin >> x2 >> y2;
+//		board.setPoB(x1,y1,x2,y2);
+//		board.setLog(x1,y1,x2,y2);
 		
-		turn++;
+//		turn++;
 	}
-*/
+
 }
