@@ -165,6 +165,8 @@ class Board: public Piece {
 			mBoardArr[7][5] = 'b';
 			mBoardArr[7][6] = 'n';
 			mBoardArr[7][7] = 'r';
+			
+			mBoardArr[4][2] = 'b';  // test
 		}
 		
 		char** getMBoardArr(){
@@ -328,46 +330,119 @@ class Game : public Board{
 					}
 				}
 			}
-		//	----------------------------------------------------------------------------------------- knight 해야됨
+		//	----------------------------------------------------------------------------------------- knight
 			
 			else if(getMBoardArr()[x1][y1] == 'n' || getMBoardArr()[x1][y1] == 'N'){
-				if(getMBoardArr()[x1][i] == 'r'){
-					if(96<getMBoardArr()[x1][i]<123){break;}
-					else {moves.push_back(x1); moves.push_back(i); break;}
+			
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1+2>=0 || y1-1>=0 || x1+2<8 || y1-1<8){
+						if(64< getMBoardArr()[x1+2][y1-1] <91){moves.push_back(x1+2); moves.push_back(y1-1);}
+					}
 				}
-				if(getMBoardArr()[x1][i] == 'R'){
-					if(64<getMBoardArr()[x1][i]<91){break;}
-					else {moves.push_back(x1); moves.push_back(i); break;}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1+2>=0 || y1-1>=0 || x1+2<8 || y1-1<8){
+						if(96<getMBoardArr()[x1+2][y1-1]<123){moves.push_back(x1+2); moves.push_back(y1-1);}
+					}
 				}
 				
-				moves.push_back(x1+2); moves.push_back(y1-1);
-				moves.push_back(x1+2); moves.push_back(y1+1);
-				moves.push_back(x1-2); moves.push_back(y1-1);
-				moves.push_back(x1-2); moves.push_back(y1+1);
-				moves.push_back(x1+1); moves.push_back(y1-2);
-				moves.push_back(x1-1); moves.push_back(y1-2);
-				moves.push_back(x1+1); moves.push_back(y1+2);
-				moves.push_back(x1-1); moves.push_back(y1+2);
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1+2<8 || y1+1<8 || x1+2>=0 || y1+1>=0){
+						if(64<getMBoardArr()[x1+2][y1+1]<91){moves.push_back(x1+2); moves.push_back(y1+1); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1+2<8 || y1+1<8 || x1+2>=0 || y1+1>=0){
+						if(96<getMBoardArr()[x1+2][y1+1]<123){moves.push_back(x1+2); moves.push_back(y1+1);}
+					}
+				}
+			
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1-2<8 || y1-1<8 || x1-2>=0 || y1-1>=0){
+						if(64<getMBoardArr()[x1-2][y1-1]<91){moves.push_back(x1-2); moves.push_back(y1-1); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1-2<8 || y1-1<8 || x1-2>=0 || y1-1>=0){
+						if(96<getMBoardArr()[x1-2][y1-1]<123){moves.push_back(x1-2); moves.push_back(y1-1); }
+					}
+				}
+			
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1-2<8 || y1+1<8 || x1-2>=0 || y1+1>=0){
+						if(64<getMBoardArr()[x1-2][y1+1]<91){moves.push_back(x1-2); moves.push_back(y1+1); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1-2<8 || y1+1<8 || x1-2>=0 || y1+1>=0){
+						if(96<getMBoardArr()[x1-2][y1+1]<123){moves.push_back(x1-2); moves.push_back(y1+1); }
+					}
+				}
+				
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1+1<8 || y1-2<8 || x1+1>=0 || y1-2>=0){
+						if(64<getMBoardArr()[x1+1][y1-2]<91){moves.push_back(x1+1); moves.push_back(y1-2); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1+1<8 || y1-2<8 || x1+1>=0 || y1-2>=0){
+						if(96<getMBoardArr()[x1+1][y1-2]<123){moves.push_back(x1+1); moves.push_back(y1-2); }
+					}
+				}
+				
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1-1<8 || y1-2<8 || x1-1>=0 || y1-2>=0){
+						if(64<getMBoardArr()[x1-1][y1-2]<91){moves.push_back(x1-1); moves.push_back(y1-2); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1-1<8 || y1-2<8 || x1-1>=0 || y1-2>=0){
+						if(96<getMBoardArr()[x1-1][y1-2]<123){moves.push_back(x1-1); moves.push_back(y1-2); }
+					}
+				}
+				
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1+1<8 || y1+2<8 || x1+1>=0 || y1+2>=0){
+						if(64<getMBoardArr()[x1+1][y1+2]<91){moves.push_back(x1+1); moves.push_back(y1+2); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1+1<8 || y1+2<8 || x1+1>=0 || y1+2>=0){
+						if(96<getMBoardArr()[x1+1][y1+2]<123){moves.push_back(x1+1); moves.push_back(y1+2); }
+					}
+				}
+				
+				if(getMBoardArr()[x1][y1] == 'n'){
+					if(x1-1<8 || y1+2<8 || x1-1>=0 || y1+2>=0){
+						if(64<getMBoardArr()[x1-1][y1+2]<91){moves.push_back(x1-1); moves.push_back(y1+2); }
+					}
+				}
+				if(getMBoardArr()[x1][y1] == 'N'){
+					if(x1-1<8 || y1+2<8 || x1-1>=0 || y1+2>=0){
+						if(96<getMBoardArr()[x1-1][y1+2]<123){moves.push_back(x1-1); moves.push_back(y1+2); }
+					}
+				}
+				
 			}
 			
-		//	----------------------------------------------------------------------------------------- bishop
+		//	----------------------------------------------------------------------------------------- bishop 하는중 피아 구별하기
 			else if(getMBoardArr()[x1][y1] == 'b' || getMBoardArr()[x1][y1] == 'B'){
 				for(int i = 1; i<4;i++){
-					moves.push_back(x1+i); moves.push_back(y1+i);
-					if(getMBoardArr()[x1+i][y1+i] != '.'){moves.push_back(x1+i); moves.push_back(y1+i); break;}
+					if(getMBoardArr()[x1+i][y1+i] == '.'){moves.push_back(x1+i); moves.push_back(y1+i);}
+					else if(getMBoardArr()[x1+i][y1+i] != '.'){
+						moves.push_back(x1+i); moves.push_back(y1+i); break;}
 				}
 				for(int i = 1; i<4;i++){
-					moves.push_back(x1+i); moves.push_back(y1-i);
-					if(getMBoardArr()[x1+i][y1-i] != '.'){moves.push_back(x1+i); moves.push_back(y1-i); break;}
+					if(getMBoardArr()[x1+i][y1-i] == '.'){moves.push_back(x1+i); moves.push_back(y1-i);}
+					else if(getMBoardArr()[x1+i][y1-i] != '.'){moves.push_back(x1+i); moves.push_back(y1-i); break;}
 				}
 				for(int i = 1; i<4;i++){
-					moves.push_back(x1-i); moves.push_back(y1+i);
-					if(getMBoardArr()[x1-i][y1+i] != '.'){moves.push_back(x1-i); moves.push_back(y1+i); break;}
+					if(getMBoardArr()[x1-i][y1+i] == '.'){moves.push_back(x1-i); moves.push_back(y1+i);}
+					else if(getMBoardArr()[x1-i][y1+i] != '.'){moves.push_back(x1-i); moves.push_back(y1+i); break;}
 					
 				}
-				for(int i = 1; i<4;i++){
-					moves.push_back(x1-i); moves.push_back(y1-i);
-					if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
+				for(int i = 1; i<4;i++){	
+					if(getMBoardArr()[x1-i][y1-i] == '.'){moves.push_back(x1-i); moves.push_back(y1-i);}
+					else if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
 				}
 			}
 		//	----------------------------------------------------------------------------------------- queen
@@ -468,6 +543,9 @@ int main(){
 		cout << "From X Y : "; cin >> x1 >> y1;
 		board.setFrom(x1, y1);
 		board.calcmoves();
+		
+		cout << board.getMoves().size() << endl;
+		
 		for(int i= 0; i< board.getMoves().size();i++){
 			cout << board.getMoves()[i] << " ";
 			if(i%2==1){cout << "\n";}
