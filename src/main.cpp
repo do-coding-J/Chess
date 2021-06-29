@@ -166,7 +166,7 @@ class Board: public Piece {
 			mBoardArr[7][6] = 'n';
 			mBoardArr[7][7] = 'r';
 			
-			mBoardArr[4][2] = 'b';  // test
+			mBoardArr[4][2] = 'p';  // test
 		}
 		
 		char** getMBoardArr(){
@@ -246,7 +246,7 @@ class Game : public Board{
 		
 		void calcmoves(){
 			moves.clear();
-		//	----------------------------------------------------------------------------------------- white pawn
+		//	----------------------------------------------------------------------------------------- white pawn 갑자기 두칸이동?
 			if(getMBoardArr()[x1][y1] == 'p'){
 				if(x1 == 6){
 					if(getMBoardArr()[x1-1][y1] == '.'){moves.push_back(x1-1); moves.push_back(y1);}
@@ -260,7 +260,7 @@ class Game : public Board{
 				if(getMBoardArr()[x1-1][y1+1] != '.'){moves.push_back(x1-1); moves.push_back(y1+1);}
 				
 			}
-		//	----------------------------------------------------------------------------------------- black pawn
+		//	----------------------------------------------------------------------------------------- black pawn 갑자기 두칸이동?
 			
 			else if(getMBoardArr()[x1][y1] == 'P'){
 				if(x1 == 1){
@@ -273,7 +273,7 @@ class Game : public Board{
 				if(getMBoardArr()[x1+1][y1-1] != '.'){moves.push_back(x1+1); moves.push_back(y1-1);}
 				if(getMBoardArr()[x1+1][y1+1] != '.'){moves.push_back(x1+1); moves.push_back(y1+1);}
 			}
-		//	----------------------------------------------------------------------------------------- rook
+		//	----------------------------------------------------------------------------------------- rook 상, 좌로 한칸 더 이동 + 피아 식별
 			
 			else if(getMBoardArr()[x1][y1] == 'r' || getMBoardArr()[x1][y1] == 'R'){
 				for(int i = x1-1; i > 0; i--){
@@ -445,7 +445,7 @@ class Game : public Board{
 					else if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
 				}
 			}
-		//	----------------------------------------------------------------------------------------- queen
+		//	----------------------------------------------------------------------------------------- queen (rook+bishop)
 			
 			else if(getMBoardArr()[x1][y1] == 'q' || getMBoardArr()[x1][y1] == 'Q'){
 				for(int i = x1-1; i > 0; i--){
