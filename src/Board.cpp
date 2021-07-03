@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Board.h"
 
 using namespace std;
@@ -76,6 +77,7 @@ void Board::initMBoardArr(){
 	mBoardArr[7][7] = 'r';
 	
 	mBoardArr[4][2] = 'r';  // test
+	mBoardArr[5][2] = 'P';	// test
 }
 	
 char** Board::getMBoardArr(){

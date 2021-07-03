@@ -8,7 +8,6 @@ using namespace std;
 int main(){
 	int x1,y1,x2,y2;
 	int turn=1;
-//	string t;
 	Game board;
 	board.makeMBoardArr(9,9);
 	board.initMBoardArr();

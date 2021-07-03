@@ -1,8 +1,7 @@
 #pragma once
-#include "Piece.h"
 
 
-class Board: public Piece {
+class Board{
 	public:
 		Board();
 		~Board();
@@ -20,6 +19,4 @@ class Board: public Piece {
 		int col; //x
 		int row; //y
 		char** mBoardArr;
-	protected:
-		Piece piece[32];
 };

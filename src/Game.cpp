@@ -1,22 +1,8 @@
 #include "Game.h"
+#include <iostream>
 #include <vector>
 
 using namespace std;
-
-void Game::pieceDeclare(){
-	piece[0].setPiece("Pawn", "black");
-	piece[1].setPiece("Rook", "black");
-	piece[2].setPiece("Knight", "black");
-	piece[3].setPiece("Bishop", "black");
-	piece[4].setPiece("Queen", "black");
-	piece[5].setPiece("King", "black");
-	piece[6].setPiece("Pawn", "white");
-	piece[7].setPiece("Rook", "white");
-	piece[8].setPiece("Knight", "white");
-	piece[9].setPiece("Bishop", "white");
-	piece[10].setPiece("Queen", "white");
-	piece[11].setPiece("King", "white");
-}
 
 void Game::setLog(int a, int b, int c, int d){
 	Log.push_back(a);
@@ -29,9 +15,7 @@ vector<int> Game::getLog(){
 	return Log;
 }
 
-void Game::setPoB(int a, int b, int c, int d){ //7, 3, 6, 3,
-	x1 = a-1, y1 = b-1, x2 = c-1, y2 = d-1;
-	
+void Game::setPoB(){ 
 	temp = getMBoardArr()[x2][y2];
 	if(getMBoardArr()[x2][y2] == '.'){
 		getMBoardArr()[x2][y2] = getMBoardArr()[x1][y1];
@@ -46,7 +30,11 @@ void Game::setPoB(int a, int b, int c, int d){ //7, 3, 6, 3,
 void Game::setFrom(int a, int b){
 	x1 = a-1; y1 = b-1;
 }
-	
+void Game::setTo(int c, int d){
+	x2 = c-1; y2 = d-1;
+}
+
+
 void Game::calcmoves(){
 	moves.clear();
 //	----------------------------------------------------------------------------------------- white pawn 
@@ -76,34 +64,36 @@ void Game::calcmoves(){
 		if(getMBoardArr()[x1+1][y1-1] != '.'){moves.push_back(x1+1); moves.push_back(y1-1);}
 		if(getMBoardArr()[x1+1][y1+1] != '.'){moves.push_back(x1+1); moves.push_back(y1+1);}
 	}
-//	----------------------------------------------------------------------------------------- rook 상, 좌로 한칸 더 이동 + 피아 식별
+//	----------------------------------------------------------------------------------------- rook 
+//	피아식별 x 
 	
 	else if(getMBoardArr()[x1][y1] == 'r' || getMBoardArr()[x1][y1] == 'R'){
+		
 		for(int i = x1-1; i >= 0; i--){ // 위로 이동
 			if(getMBoardArr()[i][y1] != '.'){
 				if(getMBoardArr()[x1][y1] == 'r'){
-					if(64<getMBoardArr()[i][y1]<91){moves.push_back(i); moves.push_back(y1); break;}
-					else if(96<getMBoardArr()[i][y1]<123){break;}
+					if('A' <= getMBoardArr()[i][y1] <= 'Z'){moves.push_back(i); moves.push_back(y1); break;}
+					else if('a' <= getMBoardArr()[i][y1] <= 'z'){break;}
 				}
 				else if(getMBoardArr()[x1][y1] == 'R'){
-					if(96<getMBoardArr()[i][y1]<123){moves.push_back(i); moves.push_back(y1); break;}
-					else if(64<getMBoardArr()[i][y1]<91){break;}
+					if('a' <= getMBoardArr()[i][y1] <= 'z'){moves.push_back(i); moves.push_back(y1); break;}
+					else if('A' <= getMBoardArr()[i][y1] <= 'Z'){break;}
 				}
 			}
 			else if(getMBoardArr()[i][y1] == '.'){
 				moves.push_back(i); moves.push_back(y1);
 			}
 		}
-			
+		
 		for(int i = x1+1; i < 8; i++){ // 아래로 이동
 			if(getMBoardArr()[i][y1] != '.'){
 				if(getMBoardArr()[x1][y1] == 'r'){
-					if(64<getMBoardArr()[i][y1]<91){moves.push_back(i); moves.push_back(y1); break;}
-					else if(96<getMBoardArr()[i][y1]<123){break;}
+					if('A' <= getMBoardArr()[i][y1] <= 'Z'){moves.push_back(i); moves.push_back(y1); break;}
+					else if('a' <= getMBoardArr()[i][y1] <= 'z'){break;}
 				}
 				else if(getMBoardArr()[x1][y1] == 'R'){
-					if(96<getMBoardArr()[i][y1]<123){moves.push_back(i); moves.push_back(y1); break;}
-					else if(64<getMBoardArr()[i][y1]<91){break;}
+					if('a' <= getMBoardArr()[i][y1] <= 'z'){moves.push_back(i); moves.push_back(y1); break;}
+					else if('A' <= getMBoardArr()[i][y1] <= 'Z'){break;}
 				}
 			}
 			else if(getMBoardArr()[i][y1] == '.'){
@@ -114,32 +104,32 @@ void Game::calcmoves(){
 		for(int i = y1-1; i >= 0; i--){ // 왼쪽으로 이동
 			if(getMBoardArr()[x1][i] != '.'){
 				if(getMBoardArr()[x1][y1] == 'r'){
-					if(64<getMBoardArr()[x1][i]<91){moves.push_back(x1); moves.push_back(i); break;}
-					else if(96<getMBoardArr()[x1][i]<123){break;}
+					if('A' <= getMBoardArr()[x1][i] <= 'Z'){moves.push_back(x1); moves.push_back(i); break;}
+					else if('a' <= getMBoardArr()[x1][i] <= 'z'){break;}
 				}
 				else if(getMBoardArr()[x1][y1] == 'R'){
-					if(96<getMBoardArr()[x1][i]<123){moves.push_back(x1); moves.push_back(i); break;}
-					else if(64<getMBoardArr()[x1][i]<91){break;}
+					if('a' <= getMBoardArr()[x1][i] <= 'z'){moves.push_back(x1); moves.push_back(i); break;}
+					else if('A' <= getMBoardArr()[x1][i] <= 'Z'){break;}
 				}
 			}
 			else if(getMBoardArr()[x1][i] == '.'){
-				moves.push_back(i); moves.push_back(y1);
+				moves.push_back(x1); moves.push_back(i);
 			}
 		}
 		
 		for(int i = y1+1; i < 8; i++){ // 우로 이동
 			if(getMBoardArr()[x1][i] != '.'){
 				if(getMBoardArr()[x1][y1] == 'r'){
-					if(64<getMBoardArr()[x1][i]<91){moves.push_back(x1); moves.push_back(i); break;}
-					else if(96<getMBoardArr()[x1][i]<123){break;}
+					if('A' <= getMBoardArr()[x1][i] <= 'Z'){moves.push_back(x1); moves.push_back(i); break;}
+					else if('a' <= getMBoardArr()[x1][i] <= 'z'){break;}
 				}
 				else if(getMBoardArr()[x1][y1] == 'R'){
-					if(96<getMBoardArr()[x1][i]<123){moves.push_back(x1); moves.push_back(i); break;}
-					else if(64<getMBoardArr()[x1][i]<91){break;}
+					if('a' <= getMBoardArr()[x1][i] <= 'z'){moves.push_back(x1); moves.push_back(i); break;}
+					else if('A' <= getMBoardArr()[x1][i] <= 'Z'){break;}
 				}
 			}
 			else if(getMBoardArr()[x1][i] == '.'){
-				moves.push_back(i); moves.push_back(y1);
+				moves.push_back(x1); moves.push_back(i);
 			}
 		}
 	}
@@ -311,7 +301,4 @@ void Game::calcmoves(){
 }
 vector<int> Game::getMoves(){
 	return moves;
-}
-void Game::showmoves(){
-	
 }
