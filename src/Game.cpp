@@ -227,28 +227,176 @@ void Game::calcmoves(){
 		
 	}
 	
-//	----------------------------------------------------------------------------------------- bishop 하는중 피아 구별하기
+//	----------------------------------------------------------------------------------------- bishop 
+//  피아 구별 x, -1?????
 	else if(getMBoardArr()[x1][y1] == 'b' || getMBoardArr()[x1][y1] == 'B'){
-		for(int i = 1; i<4;i++){
-			if(getMBoardArr()[x1+i][y1+i] == '.'){moves.push_back(x1+i); moves.push_back(y1+i);}
-			else if(getMBoardArr()[x1+i][y1+i] != '.'){
-				moves.push_back(x1+i); moves.push_back(y1+i); break;}
+		if(getMBoardArr()[x1][y1] == 'b'){
+			for(int i = 1; i<9;i++){  // 우 하
+				if(getMBoardArr()[x1+i][y1+i] == '.'){
+					if((0 <= x1+i < 8) && (0 <= y1+i < 8)){
+						moves.push_back(x1+i);
+						moves.push_back(y1+i);
+					}
+				}
+				else if(getMBoardArr()[x1+i][y1+i] != '.'){
+					if((0 <= x1+i < 8) && (0 <= y1+i < 8)){
+						if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							break;
+						}
+						else if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							moves.push_back(x1+i); 
+							moves.push_back(y1+i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 좌 하
+				if(getMBoardArr()[x1+i][y1-i] == '.'){
+					if((0 <= x1+i < 8) && (0 <= y1-i < 8)){
+						moves.push_back(x1+i); 
+						moves.push_back(y1-i);
+					}
+				}
+				else if(getMBoardArr()[x1+i][y1-i] != '.'){
+					if((0 <= x1+i < 8) && (0 <= y1-i < 8)){
+						if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							break;
+						}
+						else if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							moves.push_back(x1+i); 
+							moves.push_back(y1-i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 우 상
+				if(getMBoardArr()[x1-i][y1+i] == '.'){
+					if((0 <= x1-i < 8) && (0 <= y1+i < 8)){
+						moves.push_back(x1-i);
+						moves.push_back(y1+i);
+					}
+				}
+				else if(getMBoardArr()[x1-i][y1+i] != '.'){
+					if((0 <= x1-i < 8) && (0 <= y1+i < 8)){
+						if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							break;
+						}
+						else if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							moves.push_back(x1-i); 
+							moves.push_back(y1+i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 좌 상	
+				if(getMBoardArr()[x1-i][y1-i] == '.'){
+					if((0 <= x1-i < 8) && (0 <= y1-i < 8)){
+						moves.push_back(x1-i); 
+						moves.push_back(y1-i);
+					}
+				}
+				else if(getMBoardArr()[x1-i][y1-i] != '.'){
+					if((0 <= x1-i < 8) && (0 <= y1-i < 8)){
+						if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							break;
+						}
+						else if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							moves.push_back(x1-i); 
+							moves.push_back(y1-i); 
+							break;
+						}
+					}
+				}
+			}
 		}
-		for(int i = 1; i<4;i++){
-			if(getMBoardArr()[x1+i][y1-i] == '.'){moves.push_back(x1+i); moves.push_back(y1-i);}
-			else if(getMBoardArr()[x1+i][y1-i] != '.'){moves.push_back(x1+i); moves.push_back(y1-i); break;}
-		}
-		for(int i = 1; i<4;i++){
-			if(getMBoardArr()[x1-i][y1+i] == '.'){moves.push_back(x1-i); moves.push_back(y1+i);}
-			else if(getMBoardArr()[x1-i][y1+i] != '.'){moves.push_back(x1-i); moves.push_back(y1+i); break;}
-			
-		}
-		for(int i = 1; i<4;i++){	
-			if(getMBoardArr()[x1-i][y1-i] == '.'){moves.push_back(x1-i); moves.push_back(y1-i);}
-			else if(getMBoardArr()[x1-i][y1-i] != '.'){moves.push_back(x1-i); moves.push_back(y1-i); break;}
+		if(getMBoardArr()[x1][y1] == 'B'){
+			for(int i = 1; i<9;i++){  // 우 하
+				if(getMBoardArr()[x1+i][y1+i] == '.'){
+					if((0 <= x1+i < 8) && (0 <= y1+i < 8)){
+						moves.push_back(x1+i);
+						moves.push_back(y1+i);
+					}
+				}
+				else if(getMBoardArr()[x1+i][y1+i] != '.'){
+					if((0 <= x1+i < 8) && (0 <= y1+i < 8)){
+						if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							break;
+						}
+						else if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							moves.push_back(x1+i); 
+							moves.push_back(y1+i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 좌 하
+				if(getMBoardArr()[x1+i][y1-i] == '.'){
+					if((0 <= x1+i < 8) && (0 <= y1-i < 8)){
+						moves.push_back(x1+i); 
+						moves.push_back(y1-i);
+					}
+				}
+				else if(getMBoardArr()[x1+i][y1-i] != '.'){
+					if((0 <= x1+i < 8) && (0 <= y1-i < 8)){
+						if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							break;
+						}
+						else if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							moves.push_back(x1+i); 
+							moves.push_back(y1-i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 우 상
+				if(getMBoardArr()[x1-i][y1+i] == '.'){
+					if((0 <= x1-i < 8) && (0 <= y1+i < 8)){
+						moves.push_back(x1-i);
+						moves.push_back(y1+i);
+					}
+				}
+				else if(getMBoardArr()[x1-i][y1+i] != '.'){
+					if((0 <= x1-i < 8) && (0 <= y1+i < 8)){
+						if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							break;
+						}
+						else if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							moves.push_back(x1-i); 
+							moves.push_back(y1+i); 
+							break;
+						}
+					}
+				}
+			}
+			for(int i = 1; i<9;i++){ // 좌 상	
+				if(getMBoardArr()[x1-i][y1-i] == '.'){
+					if((0 <= x1-i < 8) && (0 <= y1-i < 8)){
+						moves.push_back(x1-i); 
+						moves.push_back(y1-i);
+					}
+				}
+				else if(getMBoardArr()[x1-i][y1-i] != '.'){
+					if((0 <= x1-i < 8) && (0 <= y1-i < 8)){
+						if('A' <= getMBoardArr()[x1+i][y1+i] <= 'Z'){
+							break;
+						}
+						else if('a' <= getMBoardArr()[x1+i][y1+i] <= 'z'){
+							moves.push_back(x1-i); 
+							moves.push_back(y1-i); 
+							break;
+						}
+					}
+				}
+			}
 		}
 	}
-//	----------------------------------------------------------------------------------------- queen (rook+bishop)
+//	----------------------------------------------------------------------------------------- queen 
+//	(rook+bishop)
 	
 	else if(getMBoardArr()[x1][y1] == 'q' || getMBoardArr()[x1][y1] == 'Q'){
 		for(int i = x1-1; i > 0; i--){

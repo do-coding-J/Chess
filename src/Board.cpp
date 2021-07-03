@@ -76,8 +76,7 @@ void Board::initMBoardArr(){
 	mBoardArr[7][6] = 'n';
 	mBoardArr[7][7] = 'r';
 	
-	mBoardArr[4][2] = 'r';  // test
-	mBoardArr[5][2] = 'P';	// test
+	mBoardArr[2][4] = 'B';  // test
 }
 	
 char** Board::getMBoardArr(){
