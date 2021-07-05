@@ -10,6 +10,7 @@ class Chess{
 		Black_
 	};
 	
+	
 	struct position{
 		size_t col; //x
 		size_t row; //y
